@@ -1,0 +1,460 @@
+/* ===================================================================
+   SKILLS & INTERNSHIP BESPOKE SECTIONS
+   Architecture: High-Precision Bento Grid & Tactical Surface Mechanics
+   Tokens: --bg (#0A0A0A), --paper (#F4F3EF), --muted (#8A8A84), --accent (#A8FF3E)
+   Fonts: IBM Plex Sans, Syne, Monospace
+   =================================================================== */
+
+/* -------------------------------------------------------------------
+   1. COMMON SECTION HEADER & SUB-ELEMENTS
+   ------------------------------------------------------------------- */
+.skills-section,
+.internship-section {
+  position: relative;
+  width: 100%;
+}
+
+.section-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.section-kicker {
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted, #8A8A84);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  user-select: none;
+}
+
+.section-kicker .kicker-dot {
+  color: var(--accent, #A8FF3E);
+  text-shadow: 0 0 8px rgba(168, 255, 62, 0.55);
+  display: inline-block;
+  line-height: 1;
+}
+
+.section-action-link {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--paper, #F4F3EF);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.9rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.section-action-link:hover {
+  color: var(--accent, #A8FF3E);
+  border-color: rgba(168, 255, 62, 0.45);
+  background: rgba(168, 255, 62, 0.08);
+  box-shadow: 0 0 14px rgba(168, 255, 62, 0.18);
+  transform: translateY(-1px);
+}
+
+.section-action-link:focus-visible {
+  outline: 2px solid var(--accent, #A8FF3E);
+  outline-offset: 2px;
+}
+
+/* -------------------------------------------------------------------
+   2. SKILLS FILTER BAR
+   ------------------------------------------------------------------- */
+.skills-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.skill-filter-btn {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.45rem 1.1rem;
+  border-radius: 980px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  color: var(--muted, #8A8A84);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+  position: relative;
+  user-select: none;
+  line-height: 1.4;
+}
+
+.skill-filter-btn:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.skill-filter-btn:active {
+  transform: scale(0.96);
+  transition: transform 100ms ease-out;
+}
+
+.skill-filter-btn:focus-visible {
+  outline: 2px solid var(--accent, #A8FF3E);
+  outline-offset: 2px;
+}
+
+.skill-filter-btn.is-active {
+  background: rgba(168, 255, 62, 0.14);
+  border-color: rgba(168, 255, 62, 0.55);
+  color: var(--accent, #A8FF3E);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26), 0 0 16px rgba(168, 255, 62, 0.24);
+}
+
+/* -------------------------------------------------------------------
+   3. SKILLS BENTO GRID & TACTILE CARDS
+   ------------------------------------------------------------------- */
+.skills-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.skill-bento-card {
+  background: rgba(16, 20, 26, 0.72);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 14px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.skill-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-4px);
+  box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32), 0 0 16px rgba(168, 255, 62, 0.10);
+  background: rgba(22, 27, 36, 0.84);
+}
+
+.skill-bento-card:active {
+  transform: scale(0.975);
+  transition: transform 100ms ease-out;
+}
+
+.skill-bento-card.is-hidden {
+  display: none !important;
+}
+
+.skill-icon-wrap {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skill-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.skill-icon-wrap.text-accent,
+.skill-icon-wrap.text-accent svg {
+  color: var(--accent, #A8FF3E);
+}
+
+.skill-bento-card:hover .skill-icon-wrap {
+  transform: scale(1.08);
+}
+
+.skill-name {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--paper, #F4F3EF);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* -------------------------------------------------------------------
+   4. INTERNSHIP BENTO CARD & ARCHITECTURE
+   ------------------------------------------------------------------- */
+.internship-bento-card {
+  display: grid;
+  grid-template-columns: 1.35fr 0.85fr;
+  gap: 2rem;
+  background: rgba(16, 20, 26, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 20px;
+  padding: 2.25rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.internship-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+.internship-content-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: center;
+  z-index: 1;
+}
+
+.intern-company-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.intern-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper, #F4F3EF);
+  flex-shrink: 0;
+  transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.internship-bento-card:hover .intern-icon-box {
+  border-color: rgba(168, 255, 62, 0.35);
+  background: rgba(168, 255, 62, 0.08);
+  color: var(--accent, #A8FF3E);
+}
+
+.intern-company-name {
+  font-family: "Syne", sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--paper, #F4F3EF);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.intern-role-title {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--muted, #8A8A84);
+  letter-spacing: 0.02em;
+  margin-top: 0.15rem;
+  display: block;
+}
+
+.intern-meta-tag-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  font-size: 0.74rem;
+  color: var(--muted, #8A8A84);
+  letter-spacing: 0.02em;
+}
+
+.intern-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.intern-bullets li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--paper, #F4F3EF);
+}
+
+.intern-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #A8FF3E);
+  box-shadow: 0 0 6px var(--accent, #A8FF3E);
+}
+
+.internship-image-side {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 220px;
+  background: rgba(10, 10, 10, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.intern-building-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(15%) contrast(105%);
+}
+
+.internship-bento-card:hover .intern-building-img {
+  transform: scale(1.03);
+  filter: grayscale(0%) contrast(108%);
+}
+
+.intern-image-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(18, 18, 18, 0.7) 0%, rgba(18, 18, 18, 0.25) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------
+   5. RESPONSIVE BREAKPOINTS
+   ------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .skills-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+
+  .internship-bento-card {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 1.75rem;
+  }
+
+  .internship-image-side {
+    min-height: 240px;
+  }
+
+  .intern-image-scrim {
+    background: linear-gradient(to bottom, transparent 30%, rgba(18, 18, 18, 0.8) 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .section-header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skills-filter-bar {
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-filter-btn {
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
+  }
+
+  .skills-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skill-bento-card {
+    padding: 1.25rem 0.75rem;
+    gap: 0.65rem;
+  }
+
+  .skill-name {
+    font-size: 0.74rem;
+  }
+
+  .internship-bento-card {
+    padding: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  .intern-company-name {
+    font-size: 1.15rem;
+  }
+
+  .intern-meta-tag-strip {
+    flex-wrap: wrap;
+    font-size: 0.7rem;
+    gap: 0.4rem;
+  }
+
+  .intern-bullets li {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .internship-image-side {
+    min-height: 180px;
+  }
+}
+
+/* -------------------------------------------------------------------
+   6. ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .skill-filter-btn,
+  .skill-bento-card,
+  .skill-icon-wrap,
+  .internship-bento-card,
+  .intern-icon-box,
+  .intern-building-img,
+  .section-action-link {
+    transition: none !important;
+    transform: none !important;
+  }
+}

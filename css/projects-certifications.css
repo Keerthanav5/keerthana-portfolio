@@ -1,0 +1,362 @@
+/**
+ * ============================================================================
+ * BESPOKE UI ARCHITECTURE — PROJECTS & CERTIFICATIONS SECTIONS
+ * File: css/projects-certifications.css
+ * Standard: Anti-AI-Slop, High-End Milled Aesthetic, Surgical 90/10 Accent Rule
+ * ============================================================================
+ */
+
+/* ----------------------------------------------------------------------------
+   SECTION: PROJECTS
+   ---------------------------------------------------------------------------- */
+.projects-section {
+  position: relative;
+  padding: clamp(4rem, 7vw, 7rem) 0;
+  width: 100%;
+}
+
+.projects-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.project-bento-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(16, 20, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32), 0 0 20px rgba(168, 255, 62, 0.08);
+}
+
+.project-bento-card:active {
+  transform: scale(0.99) translateY(-2px);
+  transition: transform 100ms ease-out;
+}
+
+.project-preview-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #050505;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-bento-card:hover .project-preview-img {
+  transform: scale(1.03);
+}
+
+.project-badge-featured {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid rgba(168, 255, 62, 0.4);
+  color: var(--accent);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.project-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  padding: clamp(1.4rem, 2.2vw, 1.85rem);
+  flex: 1;
+}
+
+.project-card-title {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.25rem, 1.6vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--paper);
+  margin: 0;
+}
+
+.project-tag-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.project-tag-strip span {
+  display: inline-flex;
+  align-items: center;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.65rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.project-bento-card:hover .project-tag-strip span {
+  border-color: rgba(255, 255, 255, 0.14);
+  color: rgba(244, 243, 239, 0.85);
+}
+
+.project-card-desc {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(244, 243, 239, 0.85);
+  margin: 0;
+}
+
+.project-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.btn-primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 1.35rem;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #0A0A0A;
+  text-decoration: none;
+  box-shadow: 0 0 14px rgba(168, 255, 62, 0.3);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 22px rgba(168, 255, 62, 0.6);
+  color: #0A0A0A;
+}
+
+.btn-secondary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--paper);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary-action:hover {
+  border-color: var(--paper);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--paper);
+  transform: translateY(-2px);
+}
+
+/* ----------------------------------------------------------------------------
+   SECTION: CERTIFICATIONS & MANIFESTO
+   ---------------------------------------------------------------------------- */
+.cert-section {
+  position: relative;
+  padding: clamp(4rem, 7vw, 7rem) 0;
+  width: 100%;
+}
+
+.cert-bento-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  align-items: stretch;
+}
+
+.cert-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.cert-item-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  background: rgba(16, 20, 26, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-item-card:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateX(4px);
+  box-shadow: 0 24px 54px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+.cert-item-card:active {
+  transform: scale(0.985);
+  transition: transform 100ms ease-out;
+}
+
+.cert-item-highlight {
+  border-color: rgba(168, 255, 62, 0.35);
+  box-shadow: 0 0 20px rgba(168, 255, 62, 0.08);
+}
+
+.cert-item-highlight:hover {
+  border-color: rgba(168, 255, 62, 0.55);
+  box-shadow: 0 0 28px rgba(168, 255, 62, 0.16);
+}
+
+.cert-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--paper);
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.cert-item-card:hover .cert-icon-circle {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cert-icon-circle.text-accent,
+.cert-item-highlight .cert-icon-circle {
+  color: var(--accent);
+  background: rgba(168, 255, 62, 0.08);
+  border-color: rgba(168, 255, 62, 0.25);
+}
+
+.cert-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cert-title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--paper);
+  margin: 0;
+}
+
+.cert-meta {
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cert-meta.text-accent {
+  color: var(--accent);
+}
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE QUERIES
+   ---------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .projects-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cert-bento-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-card-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .btn-primary-action,
+  .btn-secondary-action {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cert-item-card {
+    padding: 1rem 1.15rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-bento-card,
+  .project-preview-img,
+  .btn-primary-action,
+  .btn-secondary-action,
+  .cert-item-card {
+    transition: none !important;
+    transform: none !important;
+  }
+}

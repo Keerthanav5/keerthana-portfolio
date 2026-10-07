@@ -17,10 +17,20 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=29" />
+  <link rel="stylesheet" href="css/style.css?v=51" />
+  <link rel="stylesheet" href="css/about-education.css?v=61" />
+  <link rel="stylesheet" href="css/skills-internship.css?v=42" />
+  <link rel="stylesheet" href="css/projects-certifications.css?v=42" />
+  <link rel="stylesheet" href="css/contact-footer.css?v=48" />
+  <link rel="stylesheet" href="css/geometric-grid.css?v=9" />
+  <link rel="stylesheet" href="css/cursor.css?v=1" />
 </head>
 
 <body>
+  <!-- Precision Cyber-Optical Cursor (GPU Composited) -->
+  <div class="cyber-cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cyber-cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
   <div class="loading-screen" aria-live="polite">
     <!-- From Uiverse.io by andrew-manzyk -->
     <div class="loader">
@@ -42,6 +52,17 @@
   </div>
 
   <div class="site-shell">
+    <!-- Sticky Section HUD Indicator (01 . 05) on every page -->
+    <div class="site-section-indicator" aria-live="polite" aria-label="Current section progress">
+      <span class="indicator-index" id="currentSectionIndex">01</span>
+      <span class="indicator-total">. 05</span>
+      <span class="indicator-bar"><span class="indicator-progress" id="sectionProgressBar"></span></span>
+    </div>
+
+    <!-- Master Architectural Vertical Guide Rails (Bound to K and A bounds) -->
+    <div class="master-grid-rail-left" aria-hidden="true"></div>
+    <div class="master-grid-rail-right" aria-hidden="true"></div>
+
     <header class="site-header" id="top">
       <nav class="navbar" aria-label="Main navigation">
         <a class="brand" href="#home" aria-label="Keerthana Home">KEERTHANA</a>
@@ -66,205 +87,612 @@
     <main>
       <section id="home" class="hero-section" aria-label="Hero section">
         <div class="hero-stage">
-          <!-- Left Side: Editorial Role Headline & Scroll Indicator -->
+          <!-- Left Side: Editorial Role Headline with Vertical Scroll Indicator -->
           <div class="hero-left">
-            <h1 class="hero-title">
-              <span class="hero-title-line">BCA Graduate</span>
-              <span class="hero-title-line hero-title-accent">Software Developer</span>
-              <span class="hero-title-line">Exploring Cybersecurity</span>
-            </h1>
+            <div class="hero-role-lockup">
+              <a href="#about" class="hero-vertical-scroll" aria-label="Scroll down to explore">
+                <span class="vscroll-label">SCROLL</span>
+                <div class="vscroll-rail">
+                  <span class="vscroll-trail"></span>
+                  <span class="vscroll-dot"></span>
+                </div>
+              </a>
 
-            <a href="#about" class="hero-scroll-indicator" aria-label="Scroll down to About section">
-              <span class="scroll-label">SCROLL DOWN</span>
-              <span class="scroll-arrow" aria-hidden="true">↓</span>
-            </a>
+              <h1 class="hero-title">
+                <span class="hero-title-line">BCA Graduate</span>
+                <span class="hero-title-line hero-title-accent">Software Developer</span>
+                <span class="hero-title-line hero-title-line-cyber">Exploring <canvas id="cyberFuzzyCanvas" class="cyber-fuzzy-canvas" role="img" aria-label="Cybersecurity"></canvas></span>
+              </h1>
+            </div>
           </div>
 
           <!-- Right Side: Keerthana Portrait -->
           <div class="hero-portrait-container" id="heroPortraitContainer">
             <div class="hero-portrait-card" id="heroPortraitCard">
-              <img src="assets/images/keerthana-professional-headshot.jpg" alt="Keerthana — Software Developer"
-                class="hero-portrait-img" id="heroPortraitImg" width="1024" height="1024" />
+              <div id="hero-portrait" class="hero-halftone-portrait"></div>
             </div>
           </div>
 
           <!-- Large Name: Across lower portion overlapping portrait -->
-          <div class="hero-large-name" aria-hidden="true">
-            KEERTHANA
-          </div>
-        </div>
-      </section>
-
-      <section id="about" class="section">
-        <div class="container section-inner">
-          <div class="section-kicker">ABOUT</div>
-          <div class="copy-block about-block">
-            <h2>Hi, I'm Keerthana V</h2>
-            <p>
-              I'm a BCA graduate interested in software development
-              and exploring cybersecurity.
-            </p>
-            <p>
-              I enjoy building practical applications and turning ideas
-              into simple, useful solutions.
-            </p>
-            <p>
-              I'm currently strengthening my skills in Python,
-              web development, and cybersecurity fundamentals.
-            </p>
-            <p>
-              I'm always curious to learn, experiment with new
-              technologies, and grow as a developer.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="education" class="section">
-        <div class="container section-inner">
-          <div class="section-kicker">EDUCATION</div>
-          <div class="timeline-block">
-            <div class="timeline-header">
-              <span class="timeline-degree">BACHELOR OF COMPUTER APPLICATIONS</span>
-              <span class="timeline-meta">2023 — 2026</span>
+          <div class="hero-name-banner" aria-label="Keerthana Portfolio Title">
+            <div class="hero-masked-title-wrap">
+              <div class="hero-masked-title" aria-label="KEERTHANA">
+                <div class="hero-title-mountains-pan"></div>
+                <div class="hero-title-laser-glow"></div>
+              </div>
             </div>
-            <div class="timeline-body">
-              <p class="institution">RPA First Grade College</p>
-              <p class="detail">CGPA: 8.38</p>
+
+            <div class="hero-name-bottom-bar">
+              <div class="hero-datum-registers">
+                <span>[CODE]</span>
+                <span>[LEARN]</span>
+                <span>[SECURE]</span>
+                <span>[CREATE]</span>
+                <span>[GROW]</span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="skills" class="section">
+      <!-- ===================================================================
+           SECTION 2: ABOUT (Bespoke Exact Layout with Mountain Landscape)
+           =================================================================== -->
+      <section id="about" class="section about-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.02</span>
         <div class="container section-inner">
-          <div class="section-kicker">SKILLS</div>
-          <div class="skills-grid" aria-label="Skills list">
-            <span>Python</span>
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>MySQL</span>
-            <span>Django</span>
-            <span>Flask</span>
-            <span>GitHub</span>
-            <span>Basic Computer Networking</span>
-            <span>Cybersecurity Fundamentals</span>
+          <div class="about-container-layout">
+            <!-- Top Row: Bio Column (Left) & 3D Particle Earth Globe (Right) -->
+            <div class="about-top-grid">
+              <div class="about-left-col">
+                <div class="section-title-anchor">
+                  <span class="section-index">02</span>
+                  <span class="section-title">ABOUT</span>
+                </div>
+                <h2 class="about-headline">
+                  Hi, I'm <span class="text-accent">Keerthana</span> V
+                </h2>
+                <div class="about-bio-text">
+                  <p>
+                    I'm a BCA graduate interested in software development and exploring cybersecurity. I enjoy building practical applications and turning ideas into simple, useful solutions.
+                  </p>
+                  <p>
+                    I'm currently strengthening my skills in Python, web development, and cybersecurity fundamentals.
+                  </p>
+                  <p>
+                    I'm always curious to learn, experiment with new technologies, and grow as a developer.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right: 3D Particle Earth Globe & 3 Orbiting Satellites -->
+              <div class="about-right-col">
+                <div class="about-globe-stage" id="aboutGlobeStage">
+                  <canvas id="earthParticleCanvas" class="earth-particle-canvas" aria-label="3D Particle Earth visualization"></canvas>
+
+                  <!-- 3 Orbiting Satellites (120 deg apart) -->
+                  <div class="orbit-satellite" id="satellite-opp" data-index="0">
+                    <div class="satellite-kicker-top">OPPORTUNITY</div>
+                    <div class="satellite-jewel">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="satellite-readout">
+                      <div class="readout-body">
+                        <p class="readout-headline">Open to Internships &amp;<br>Entry-level roles</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="orbit-satellite" id="satellite-focus" data-index="1">
+                    <div class="satellite-kicker-top">FOCUS AREAS</div>
+                    <div class="satellite-jewel">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <div class="satellite-readout">
+                      <div class="readout-body">
+                        <p class="readout-headline">Web Development &amp;<br>Cybersecurity Fundamentals</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="orbit-satellite" id="satellite-goal" data-index="2">
+                    <div class="satellite-kicker-top">GOAL</div>
+                    <div class="satellite-jewel">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <div class="satellite-readout">
+                      <div class="readout-body">
+                        <p class="readout-headline">Build secure and<br>impactful software solutions</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="internship" class="section">
+      <!-- ===================================================================
+           SECTION 3: EDUCATION (Structured Bento with 4 Metric Datum Chips)
+           =================================================================== -->
+      <section id="education" class="section education-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.03</span>
         <div class="container section-inner">
-          <div class="section-kicker">INTERNSHIP</div>
-          <div class="internship-block">
-            <div class="mini-label">Company</div>
-            <h3>ROOMAN TECHNOLOGIES</h3>
+          <div class="section-title-anchor">
+            <span class="section-index">03</span>
+            <h2 class="section-title">EDUCATION</h2>
+          </div>
 
-            <div class="mini-label">Project</div>
-            <h3>STUDENT GRIEVANCE REDRESSAL SYSTEM</h3>
+          <div class="education-bento-card">
+            <div class="edu-main-row">
+              <div class="edu-institution-block">
+                <div class="edu-icon-badge">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="edu-details">
+                  <h3 class="edu-degree">Bachelor of Computer Applications</h3>
+                  <span class="edu-college">RPA First Grade College</span>
+                </div>
+              </div>
 
-            <div class="mini-label">Technologies</div>
-            <p class="tech-list">Python · Flask · MySQL · HTML · CSS</p>
+              <div class="edu-meta-block">
+                <span class="edu-timeline">2023 — 2026</span>
+                <span class="edu-score-pill">CGPA: <strong class="text-accent">8.38</strong></span>
+              </div>
+            </div>
 
-            <div class="mini-label">Description</div>
-            <p>
-              Developed a web-based Student Grievance Redressal System for submitting, assigning, tracking and managing
-              student grievances.
-            </p>
+            <!-- 4 Metric Datum Chips -->
+            <div class="edu-metrics-grid">
+              <div class="edu-metric-chip">
+                <div class="metric-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="metric-text">
+                  <span class="metric-value">3 Years</span>
+                  <span class="metric-label">of Learning</span>
+                </div>
+              </div>
+
+              <div class="edu-metric-chip">
+                <div class="metric-icon text-accent">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="metric-text">
+                  <span class="metric-value">8.38</span>
+                  <span class="metric-label">CGPA</span>
+                </div>
+              </div>
+
+              <div class="edu-metric-chip">
+                <div class="metric-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>
+                </div>
+                <div class="metric-text">
+                  <span class="metric-value">Core Focus</span>
+                  <span class="metric-label">Development & Security</span>
+                </div>
+              </div>
+
+              <div class="edu-metric-chip">
+                <div class="metric-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div class="metric-text">
+                  <span class="metric-value">Continuous</span>
+                  <span class="metric-label">Learning Mindset</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="section">
+      <!-- ===================================================================
+           SECTION 4: SKILLS (Category Filter Bar + 10 Bento Tech Cards)
+           =================================================================== -->
+      <section id="skills" class="section skills-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.04</span>
         <div class="container section-inner">
-          <div class="section-kicker">PROJECTS</div>
+          <div class="section-header-flex">
+            <div class="section-title-anchor">
+              <span class="section-index">04</span>
+              <h2 class="section-title">SKILLS</h2>
+            </div>
+            <a href="#projects" class="section-action-link">View Projects ↗</a>
+          </div>
 
-          <article class="project-item">
-            <div class="project-number">PROJECT 01</div>
-            <div class="project-head">
-              <h3>SMART ATTENDANCE SYSTEM</h3>
-            </div>
-            <div class="project-meta">
-              <span>Python</span>
-              <span>Django</span>
-              <span>MySQL</span>
-              <span>HTML</span>
-              <span>CSS</span>
-            </div>
-            <ul class="project-bullets">
-              <li>Developed a web-based attendance system with separate portals for administrators, teachers, and
-                students.</li>
-              <li>Implemented attendance management and student attendance tracking with organized records and reports.
-              </li>
-            </ul>
-          </article>
+          <!-- Interactive Filter Category Bar -->
+          <div class="skills-filter-bar" role="tablist" aria-label="Skills Category Filter">
+            <button class="skill-filter-btn is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+            <button class="skill-filter-btn" data-filter="frontend" role="tab" aria-selected="false">Frontend</button>
+            <button class="skill-filter-btn" data-filter="backend" role="tab" aria-selected="false">Backend</button>
+            <button class="skill-filter-btn" data-filter="database" role="tab" aria-selected="false">Database</button>
+            <button class="skill-filter-btn" data-filter="tools" role="tab" aria-selected="false">Tools</button>
+            <button class="skill-filter-btn" data-filter="security" role="tab" aria-selected="false">Security</button>
+          </div>
 
-          <article class="project-item">
-            <div class="project-number">PROJECT 02</div>
-            <div class="project-head">
-              <h3>STUDENT GRIEVANCE REDRESSAL SYSTEM</h3>
+          <!-- 10 Bento Tech Cards Grid -->
+          <div class="skills-bento-grid">
+            <!-- 1. Python -->
+            <div class="skill-bento-card" data-category="backend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#3776AB" d="M63.5 1.5C31.2 1.5 33 15.6 33 15.6l.1 14.8h31.2v4.4H20.8S1.5 32.5 1.5 64.6c0 32.2 16.9 31.1 16.9 31.1h10.1v-14.3s-.5-17 16.7-17h28.7s16.2.3 16.2-15.9V17.2S93 1.5 63.5 1.5zm-16.8 9.9c2.8 0 5 2.3 5 5s-2.2 5-5 5-5-2.2-5-5 2.2-5 5-5z"/><path fill="#FFD43B" d="M64.5 126.5c32.3 0 30.5-14.1 30.5-14.1l-.1-14.8H63.7v-4.4h43.5s19.3 2.3 19.3-29.8c0-32.2-16.9-31.1-16.9-31.1h-10.1v14.3s.5 17-16.7 17H44.1s-16.2-.3-16.2 15.9v31.3s-2.9 15.7 26.6 15.7zm16.8-9.9c-2.8 0-5-2.2-5-5s2.2-5 5-5 5 2.2 5 5-2.2 5-5 5z"/></svg>
+              </div>
+              <span class="skill-name">Python</span>
             </div>
-            <div class="project-meta">
-              <span>Python</span>
-              <span>Flask</span>
-              <span>MySQL</span>
-              <span>HTML</span>
-              <span>CSS</span>
+
+            <!-- 2. HTML5 -->
+            <div class="skill-bento-card" data-category="frontend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#E34F26" d="M19.4 113.8L8.6 0h110.8l-10.8 113.8-44.6 12.7z"/><path fill="#EF652A" d="M64 116.1l36.3-10.3 8.9-93.5H64z"/><path fill="#ECECEC" d="M64 48.9H46.1l-1.2-13.8H64V22.8H31.1l3.6 40.5H64zm0 37.3l-.2.1-16.3-4.4-1-11.7H33.9l1.9 22.8L64 99.4z"/><path fill="#FFF" d="M64 48.9h17.9l-1.7 19.1-16.2 4.4v13.5l28.2-7.8 3.7-41.5H64zm0-26.1v12.3h32.9l1.1-12.3z"/></svg>
+              </div>
+              <span class="skill-name">HTML5</span>
             </div>
-            <ul class="project-bullets">
-              <li>Developed a web application for students to submit and track grievances.</li>
-              <li>Implemented grievance as
-                signment and status management for efficient complaint handling.</li>
-            </ul>
-          </article>
+
+            <!-- 3. CSS3 -->
+            <div class="skill-bento-card" data-category="frontend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#1572B6" d="M19.4 113.8L8.6 0h110.8l-10.8 113.8-44.6 12.7z"/><path fill="#33A9DC" d="M64 116.1l36.3-10.3 8.9-93.5H64z"/><path fill="#ECECEC" d="M64 48.9H46.1l-1.2-13.8H64V22.8H31.1l3.6 40.5H64zm0 37.3l-.2.1-16.3-4.4-1-11.7H33.9l1.9 22.8L64 99.4z"/><path fill="#FFF" d="M64 48.9h17.9l-1.7 19.1-16.2 4.4v13.5l28.2-7.8 3.7-41.5H64zm0-26.1v12.3h32.9l1.1-12.3z"/></svg>
+              </div>
+              <span class="skill-name">CSS3</span>
+            </div>
+
+            <!-- 4. JavaScript -->
+            <div class="skill-bento-card" data-category="frontend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#F7DF1E" d="M1.5 1.5h125v125H1.5z"/><path d="M72.2 108.6c3.4 5.6 7.9 9.8 15.9 9.8 6.7 0 11-3.3 11-8 0-5.5-4.4-7.6-11.8-10.9-10.8-4.7-18-10.4-18-22.9 0-11.4 8.7-20 22.1-20 9.7 0 16.7 3.5 21.6 12.2l-10.2 6.5c-2.3-4.1-5.4-6.1-11.4-6.1-5.1 0-8.6 3.1-8.6 7 0 4.8 3.6 6.9 10.7 9.9 12.4 5.3 19.3 10.9 19.3 24.1 0 13.8-10.9 21.6-24.8 21.6-14 0-22.8-6.9-27.1-16.4zm-47.5.3c2.4 4.2 5.5 7.7 11.2 7.7 5.8 0 9.5-2.7 9.5-12.8V57.6h13.7v46.1c0 17.5-10.2 25.1-23.7 25.1-11.7 0-18.4-6-21.7-13.6z"/></svg>
+              </div>
+              <span class="skill-name">JavaScript</span>
+            </div>
+
+            <!-- 5. MySQL -->
+            <div class="skill-bento-card" data-category="database">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#00758F" d="M106.8 59.8c-2.1-2.9-4.8-4.5-8.4-4.8-1.5-.1-3.1.2-4.6.9-2.7 1.2-5 3.1-6.9 5.5-1.9 2.3-3.2 4.9-3.9 7.7-1.3 5.4-.5 10.7 2.3 15.3 2.1 3.5 5.1 6.1 8.9 7.5 4.3 1.6 8.7 1.3 12.6-1 3.1-1.8 5.4-4.5 6.7-7.9 1.4-3.6 1.6-7.3.7-11-.9-4.3-3.5-8.5-7.4-12.2zM77.4 75.3c-.9 3.5-2.6 6.5-5 8.9-2.5 2.4-5.5 4-8.8 4.7-3.9.8-7.8.2-11.3-1.8-3.4-1.9-5.9-4.8-7.3-8.4-1.4-3.7-1.6-7.5-.7-11.3.9-3.7 2.7-6.9 5.3-9.4 2.6-2.5 5.7-4.1 9.2-4.8 3.9-.7 7.7-.1 11.1 1.9 3.3 1.9 5.8 4.7 7.2 8.3 1.4 3.7 1.5 7.6.3 11.9z"/><path fill="#F29111" d="M37.9 83.7c-2.7 2.5-5.9 4.1-9.5 4.8-3.9.7-7.8.1-11.3-1.9-3.4-1.9-5.9-4.8-7.3-8.5-1.4-3.7-1.5-7.5-.5-11.3 1-3.7 2.8-6.8 5.4-9.3 2.6-2.5 5.7-4.1 9.3-4.8 3.9-.7 7.7-.1 11.1 1.9 3.4 1.9 5.9 4.8 7.3 8.4 1.4 3.7 1.5 7.6.4 11.9-.9 3.6-2.6 6.5-4.9 8.8z"/></svg>
+              </div>
+              <span class="skill-name">MySQL</span>
+            </div>
+
+            <!-- 6. Django -->
+            <div class="skill-bento-card" data-category="backend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#092E20" d="M1.5 1.5h125v125H1.5z"/><path fill="#FFF" d="M60.4 21.6h14.8v52.3c-7.3.8-12.7.3-14.8-.8zm0 59.9c2.1 1.1 7.5 1.6 14.8.8v24.1H60.4zM39.6 42.4h14.7V98c-3.7 2.2-9.6 3.6-17.6 3.6-17.4 0-25.2-11.7-25.2-26.6 0-16.1 9.4-28.7 26.6-28.7 8.3 0 14.8 1.9 17.6 3.9v14.4c-2.9-1.9-8.4-3.5-14.3-3.5-8.5 0-12.7 5.7-12.7 13.9 0 7.9 4.3 13.7 13.1 13.7 4.9 0 9.2-1.2 12.5-2.7V42.4zm47.2 17.5h14.8v31.6c-4.4 2.8-11.2 4.6-20.7 4.6-9.1 0-16.1-2.9-19.9-7.3l9.4-9.3c2.7 2.9 6.8 4.6 11.5 4.6 4.9 0 7.5-1 7.5-3.8 0-7.3-17.3-4.8-17.3-18.4 0-7.7 5.7-13.6 18.2-13.6 6.9 0 13.3 1.6 16.5 3.8z"/></svg>
+              </div>
+              <span class="skill-name">Django</span>
+            </div>
+
+            <!-- 7. Flask -->
+            <div class="skill-bento-card" data-category="backend">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
+              </div>
+              <span class="skill-name">Flask</span>
+            </div>
+
+            <!-- 8. GitHub -->
+            <div class="skill-bento-card" data-category="tools">
+              <div class="skill-icon-wrap">
+                <svg width="34" height="34" viewBox="0 0 128 128"><path fill="#F4F3EF" fill-rule="evenodd" clip-rule="evenodd" d="M64 0C28.7 0 0 28.7 0 64c0 28.3 18.3 52.3 43.8 60.8 3.2.6 4.4-1.4 4.4-3.1v-10.8c-17.8 3.9-21.6-8.6-21.6-8.6-2.9-7.4-7.1-9.4-7.1-9.4-5.8-4 .4-3.9.4-3.9 6.4.5 9.8 6.6 9.8 6.6 5.7 9.8 15 7 18.6 5.3 1.1-4.2 2.5-7 4.1-8.6-14.2-1.6-29.2-7.1-29.2-31.6 0-7 2.5-12.7 6.6-17.2-.7-1.6-2.9-8.1.6-17 0 0 5.4-1.7 17.6 6.6 5.1-1.4 10.6-2.2 16.1-2.2s11 0.7 16.1 2.2c12.2-8.3 17.6-6.6 17.6-6.6 3.5 8.9 1.3 15.4.6 17 4.1 4.5 6.6 10.2 6.6 17.2 0 24.6-15 30-29.3 31.6 2.3 2 4.4 5.9 4.4 11.9v17.6c0 1.7 1.2 3.7 4.4 3.1C109.7 116.3 128 92.3 128 64c0-35.3-28.7-64-64-64z"/></svg>
+              </div>
+              <span class="skill-name">GitHub</span>
+            </div>
+
+            <!-- 9. Basic Computer Networking -->
+            <div class="skill-bento-card" data-category="security">
+              <div class="skill-icon-wrap text-accent">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="6" height="6" x="9" y="2" rx="1"/><rect width="6" height="6" x="2" y="16" rx="1"/><rect width="6" height="6" x="16" y="16" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3M12 8v4"/></svg>
+              </div>
+              <span class="skill-name">Computer Networking</span>
+            </div>
+
+            <!-- 10. Cybersecurity Fundamentals -->
+            <div class="skill-bento-card" data-category="security">
+              <div class="skill-icon-wrap text-accent">
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <span class="skill-name">Cybersecurity Fundamentals</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="certifications" class="section">
+      <!-- ===================================================================
+           SECTION 5: INTERNSHIP (Rooman Technologies Bento Experience)
+           =================================================================== -->
+      <section id="internship" class="section internship-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.05</span>
         <div class="container section-inner">
-          <div class="section-kicker">CERTIFICATIONS</div>
-          <ul class="cert-list">
-            <li>Cyber Security using Java</li>
-            <li>Python Developer</li>
-            <li>Internship Certification</li>
-            <li>
-              <div>ISC2 Certified in Cybersecurity (CC)</div>
-              <div>Exam Candidate</div>
-            </li>
-          </ul>
+          <div class="section-header-flex">
+            <div class="section-title-anchor">
+              <span class="section-index">05</span>
+              <h2 class="section-title">INTERNSHIP</h2>
+            </div>
+            <a href="#certifications" class="section-action-link">View Certificate ↗</a>
+          </div>
+
+          <div class="internship-bento-card">
+            <div class="internship-content-side">
+              <div class="intern-company-header">
+                <div class="intern-icon-box">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4M8 6h.01M16 6h.01M12 6h.01M12 10h.01M12 14h.01M16 10h.01M16 14h.01M8 10h.01M8 14h.01"/></svg>
+                </div>
+                <div>
+                  <h3 class="intern-company-name">ROOMAN TECHNOLOGIES</h3>
+                  <span class="intern-role-title">Software Development Intern</span>
+                </div>
+              </div>
+
+              <div class="intern-meta-tag-strip">
+                <span>Jun 2023 — Aug 2023 (2 Months)</span>
+                <span>•</span>
+                <span>Remote / Bangalore</span>
+              </div>
+
+              <ul class="intern-bullets">
+                <li>Worked on web development projects using Python and Flask framework.</li>
+                <li>Gained hands-on experience in building and maintaining structured web applications with MySQL databases.</li>
+                <li>Implemented grievance assignment and status management for efficient complaint handling.</li>
+              </ul>
+            </div>
+
+            <div class="internship-image-side">
+              <img src="assets/images/internship-rooman.webp" alt="Rooman Technologies corporate office" class="intern-building-img" loading="lazy" />
+              <div class="intern-image-scrim"></div>
+            </div>
+          </div>
         </div>
       </section>
 
+      <!-- ===================================================================
+           SECTION 6: PROJECTS (Interactive UI Preview Cards with Dual Actions)
+           =================================================================== -->
+      <section id="projects" class="section projects-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.06</span>
+        <div class="container section-inner">
+          <div class="section-header-flex">
+            <div class="section-title-anchor">
+              <span class="section-index">06</span>
+              <h2 class="section-title">PROJECTS</h2>
+            </div>
+            <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="section-action-link">View All on GitHub ↗</a>
+          </div>
+
+          <div class="projects-bento-grid">
+            <!-- Project 1: Student Grievance Redressal System -->
+            <article class="project-bento-card">
+              <div class="project-preview-frame">
+                <img src="assets/images/project-grievance.webp" alt="Student Grievance Redressal System UI Screenshot" class="project-preview-img" loading="lazy" />
+              </div>
+
+              <div class="project-card-body">
+                <h3 class="project-card-title">Student Grievance Redressal System</h3>
+                
+                <div class="project-tag-strip">
+                  <span>Python</span>
+                  <span>Flask</span>
+                  <span>MySQL</span>
+                  <span>HTML</span>
+                  <span>CSS</span>
+                </div>
+
+                <p class="project-card-desc">
+                  A web-based system for students to submit and track grievances with automated ticket assignment and status handling for administrators.
+                </p>
+
+                <div class="project-card-actions">
+                  <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+                    Live Demo ↗
+                  </a>
+                  <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="btn-secondary-action">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Project 2: Smart Attendance System -->
+            <article class="project-bento-card">
+              <div class="project-preview-frame">
+                <img src="assets/images/project-attendance.webp" alt="Smart Attendance System UI Screenshot" class="project-preview-img" loading="lazy" />
+              </div>
+
+              <div class="project-card-body">
+                <h3 class="project-card-title">Smart Attendance System</h3>
+                
+                <div class="project-tag-strip">
+                  <span>Python</span>
+                  <span>Django</span>
+                  <span>MySQL</span>
+                  <span>HTML</span>
+                  <span>CSS</span>
+                </div>
+
+                <p class="project-card-desc">
+                  A web-based attendance management platform with dedicated portals for administrators, faculty, and students with real-time tracking reports.
+                </p>
+
+                <div class="project-card-actions">
+                  <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+                    Live Demo ↗
+                  </a>
+                  <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="btn-secondary-action">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                    View Code
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SECTION 7: CERTIFICATIONS & MANIFESTO QUOTE BANNER
+           =================================================================== -->
+      <section id="certifications" class="section cert-section">
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.07</span>
+        <div class="container section-inner">
+          <div class="section-title-anchor">
+            <span class="section-index">07</span>
+            <h2 class="section-title">CERTIFICATIONS</h2>
+          </div>
+
+          <div class="cert-bento-layout">
+            <!-- Left: 4 Stacked Glass Certification Cards -->
+            <div class="cert-cards-stack">
+              <div class="cert-item-card">
+                <div class="cert-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <div class="cert-card-text">
+                  <h4 class="cert-title">Cyber Security using Java</h4>
+                  <span class="cert-meta">Certification</span>
+                </div>
+              </div>
+
+              <div class="cert-item-card">
+                <div class="cert-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v7.31M14 2v7.31M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"/></svg>
+                </div>
+                <div class="cert-card-text">
+                  <h4 class="cert-title">Python Developer</h4>
+                  <span class="cert-meta">Certification</span>
+                </div>
+              </div>
+
+              <div class="cert-item-card">
+                <div class="cert-icon-circle">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="5" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                </div>
+                <div class="cert-card-text">
+                  <h4 class="cert-title">Internship Certification</h4>
+                  <span class="cert-meta">Rooman Technologies</span>
+                </div>
+              </div>
+
+              <div class="cert-item-card cert-item-highlight">
+                <div class="cert-icon-circle text-accent">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                </div>
+                <div class="cert-card-text">
+                  <h4 class="cert-title">ISC2 Certified in Cybersecurity (CC)</h4>
+                  <span class="cert-meta text-accent">Exam Candidate</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Quote Manifesto Visual Banner -->
+            <div class="manifesto-quote-card">
+              <img src="assets/images/keerthana-quote-card.webp" alt="Keerthana V smiling against alpine peaks" class="manifesto-card-bg" loading="lazy" />
+              <div class="manifesto-scrim"></div>
+              
+              <div class="manifesto-quote-content">
+                <div class="manifesto-quote-mark">“</div>
+                <p class="manifesto-quote-text">
+                  Curious to learn.<br>
+                  Passionate to build.<br>
+                  Committed to a safer digital tomorrow.
+                </p>
+                <span class="manifesto-signature">Keerthana V</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SECTION 8: CONTACT (High-Impact 'LET'S CONNECT' Bento Block)
+           =================================================================== -->
       <section id="contact" class="section contact-section">
-        <div class="container section-inner">
-          <div class="contact-header">
-            <div class="section-kicker">CONTACT</div>
-            <h2>LET'S CONNECT.</h2>
-            <p class="contact-intro">
-              Looking for an opportunity to turn my skills into real-world experience and grow as a software developer.
-            </p>
+        <div class="section-datum-divider" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-left" aria-hidden="true"></div>
+        <div class="datum-joint datum-joint-right" aria-hidden="true"></div>
+        <span class="section-coord-tag">SEC.08</span>
+        <div class="container section-inner contact-section-inner">
+          <div class="section-title-anchor contact-title-anchor">
+            <span class="section-index">08</span>
+            <h2 class="section-title">CONTACT</h2>
           </div>
 
-          <div class="contact-details" aria-label="Contact details">
-            <div class="contact-item">
-              <span class="contact-label">Email:</span>
-              <a href="mailto:keerthanav606@gmail.com">keerthanav606@gmail.com</a>
-            </div>
-            <div class="contact-item">
-              <span class="contact-label">LinkedIn:</span>
-              <a href="https://www.linkedin.com/in/keerthana-v-873455331" target="_blank" rel="noopener noreferrer">
-                https://www.linkedin.com/in/keerthana-v-873455331
-              </a>
-            </div>
-            <div class="contact-item">
-              <span class="contact-label">GitHub:</span>
-              <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer">
-                https://github.com/Keerthanav5
+          <div class="contact-bento-card">
+            <div class="contact-card-content">
+              <!-- Apple VisionOS Recessed Status Notch -->
+              <div class="contact-status-notch">
+                <span class="status-pulse-dot" aria-hidden="true"></span>
+                <span class="status-notch-text">AVAILABLE FOR OPPORTUNITIES</span>
+              </div>
+
+              <h2 class="contact-title">Let's Connect.</h2>
+              <p class="contact-lead-desc">
+                Open to internships, junior developer roles, and software engineering collaborations.
+              </p>
+
+              <div class="contact-links-list">
+                <a href="mailto:keerthanav606@gmail.com" class="contact-link-row">
+                  <div class="contact-row-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="contact-row-label">Email</span>
+                    <span class="contact-row-value">keerthanav606@gmail.com</span>
+                  </div>
+                  <span class="contact-row-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="https://www.linkedin.com/in/keerthana-v-873455331" target="_blank" rel="noopener noreferrer" class="contact-link-row">
+                  <div class="contact-row-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="contact-row-label">LinkedIn</span>
+                    <span class="contact-row-value">linkedin.com/in/keerthana-v-873455331</span>
+                  </div>
+                  <span class="contact-row-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a href="https://github.com/Keerthanav5" target="_blank" rel="noopener noreferrer" class="contact-link-row">
+                  <div class="contact-row-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                  </div>
+                  <div class="contact-row-text">
+                    <span class="contact-row-label">GitHub</span>
+                    <span class="contact-row-value">github.com/Keerthanav5</span>
+                  </div>
+                  <span class="contact-row-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+              <!-- Primary Apple Tactile Pill Button -->
+              <a href="mailto:keerthanav606@gmail.com" class="btn-send-message">
+                <span>Send a Message</span>
+                <span class="btn-send-arrow" aria-hidden="true">↗</span>
               </a>
             </div>
           </div>
 
+          <!-- ===================================================================
+               MINIMAL SITE FOOTER
+               =================================================================== -->
           <footer class="site-footer">
             <div class="footer-inner">
               <div class="footer-brand-block">
@@ -272,10 +700,16 @@
                 <p>Software Developer · Exploring Cybersecurity</p>
               </div>
 
-              <div class="footer-links" aria-hidden="true"></div>
+              <nav class="footer-nav-links" aria-label="Footer navigation">
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+              </nav>
 
               <div class="footer-bottom">
-                <span>© 2026 Keerthana V</span>
+                <span>© 2026 Keerthana V. All rights reserved.</span>
               </div>
             </div>
           </footer>
@@ -287,7 +721,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="js/script.js?v=24"></script>
+  <script src="js/halftone.js?v=6"></script>
+  <script src="js/script.js?v=42"></script>
+  <script src="js/geometric-grid.js?v=5"></script>
+  <script src="js/earth-globe.js?v=13"></script>
+  <script src="js/cursor.js?v=1"></script>
+  <script src="js/fuzzy-text.js?v=3"></script>
 </body>
 
 </html>

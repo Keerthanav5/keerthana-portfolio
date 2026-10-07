@@ -1,0 +1,687 @@
+/**
+ * ============================================================================
+ * BESPOKE UI ARCHITECTURE — ABOUT & EDUCATION SECTIONS
+ * File: css/about-education.css
+ * Standard: Anti-AI-Slop, High-End Milled Aesthetic, Surgical 90/10 Accent Rule
+ * ============================================================================
+ */
+
+/* ----------------------------------------------------------------------------
+   SECTION: ABOUT (Bespoke 90/10 Milled Architectural Layout)
+   ---------------------------------------------------------------------------- */
+.about-section {
+  position: relative;
+  padding: clamp(3rem, 5vw, 5rem) 0 clamp(4.5rem, 7vw, 6.5rem);
+  width: 100%;
+}
+
+.about-kicker,
+.about-section .section-kicker {
+  font-family: 'IBM Plex Sans', monospace;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #A8FF3E;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.about-top-grid,
+.about-bento-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Left Column: Bio & Typography */
+.about-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.about-headline {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(2.2rem, 3.4vw, 3.3rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #F4F3EF;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 960px) {
+  .about-headline {
+    white-space: nowrap;
+  }
+}
+
+.about-headline .text-accent {
+  color: #A8FF3E;
+  font-weight: 800;
+}
+
+.about-bio-text p,
+.about-bio-lead,
+.about-bio-sub {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: clamp(0.92rem, 1vw, 1.02rem);
+  line-height: 1.65;
+  color: rgba(244, 243, 239, 0.82);
+  margin-bottom: 1.1rem;
+  max-width: 54ch;
+}
+
+/* Right Column: 3D Particle Earth Globe Stage */
+.about-right-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  position: relative;
+  width: 100%;
+}
+
+.about-globe-stage {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  max-width: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.earth-particle-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Orbiting Satellites */
+.orbit-satellite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+/* Milled Tactile Micro-Jewel (3D Keycap Switch) */
+.satellite-jewel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  background: rgba(14, 14, 14, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14),
+              0 8px 20px rgba(0, 0, 0, 0.7);
+  color: #A8FF3E;
+  padding: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              box-shadow 0.25s ease,
+              background-color 0.25s ease;
+}
+
+.satellite-jewel svg {
+  display: block;
+  transition: transform 0.25s ease;
+}
+
+/* Active State for Jewel when at Front Turn */
+.orbit-satellite.is-active .satellite-jewel {
+  border-color: rgba(168, 255, 62, 0.75);
+  background: rgba(20, 22, 18, 0.98);
+  box-shadow: inset 0 1px 0 rgba(168, 255, 62, 0.35),
+              0 0 22px rgba(168, 255, 62, 0.4),
+              0 10px 24px rgba(0, 0, 0, 0.85);
+  transform: scale(1.1);
+}
+
+.orbit-satellite.is-active .satellite-jewel svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(168, 255, 62, 0.7));
+}
+
+/* Category Kicker on TOP of Logo */
+.satellite-kicker-top {
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  font-family: 'IBM Plex Sans', monospace;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #A8FF3E;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(4px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease,
+              visibility 0.35s;
+  text-shadow: 0 0 10px rgba(168, 255, 62, 0.5), 0 2px 6px rgba(0, 0, 0, 0.9);
+  z-index: 20;
+}
+
+.orbit-satellite.is-active .satellite-kicker-top {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  filter: blur(0px) brightness(1);
+}
+
+/* Elegant, Weightless Headline Directly Below Logo (Compact 2-Line Balanced Block) */
+.satellite-readout {
+  position: absolute;
+  top: calc(100% + 8px);
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%) translateY(5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: max-content;
+  max-width: 210px;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(4px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease,
+              visibility 0.35s;
+  z-index: 20;
+}
+
+.readout-body {
+  width: 100%;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Elegant, Understated Swiss Typography (Compact Two-Line Format) */
+.readout-headline {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(244, 243, 239, 0.92);
+  line-height: 1.35;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 16px rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.readout-datum-line,
+.readout-sub {
+  display: none;
+}
+
+/* Active Turn: Reveal Headline Below Keycap */
+.orbit-satellite.is-active .satellite-readout {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  filter: blur(0px) brightness(1);
+}
+
+/* Quantum Vanish Downward with Soft Blur */
+.orbit-satellite.is-vanishing .satellite-readout {
+  opacity: 0;
+  visibility: visible;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(10px) scale(0.97);
+  filter: blur(6px) brightness(1.4);
+  transition: opacity 0.32s cubic-bezier(0.7, 0, 0.84, 0),
+              transform 0.32s cubic-bezier(0.7, 0, 0.84, 0),
+              filter 0.32s ease;
+}
+
+.orbit-satellite.is-vanishing .satellite-jewel {
+  transform: scale(0.95);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Responsive Media Queries for About Section */
+@media (max-width: 960px) {
+  .about-top-grid,
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-globe-stage {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-headline {
+    font-size: 2rem;
+    white-space: normal;
+  }
+
+  .about-globe-stage {
+    min-height: 360px;
+  }
+
+  .satellite-readout {
+    max-width: 170px;
+  }
+
+  .readout-headline {
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .satellite-jewel {
+    width: 34px;
+    height: 34px;
+  }
+
+  .satellite-jewel svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .satellite-kicker-top {
+    font-size: 0.58rem;
+  }
+}
+
+
+/* ----------------------------------------------------------------------------
+   SECTION: EDUCATION
+   ---------------------------------------------------------------------------- */
+.education-section {
+  position: relative;
+  padding: clamp(3rem, 6vw, 6rem) 0;
+  width: 100%;
+}
+
+.education-bento-card {
+  background: rgba(16, 20, 26, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 20px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.education-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+/* Institution Header Row */
+.edu-main-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 1.5rem;
+}
+
+.edu-institution-block {
+  display: flex;
+  align-items: center;
+  gap: 1.15rem;
+  min-width: 0;
+}
+
+.edu-icon-badge {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  color: var(--accent, #A8FF3E);
+  flex-shrink: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.education-bento-card:hover .edu-icon-badge {
+  border-color: rgba(168, 255, 62, 0.3);
+  background: rgba(168, 255, 62, 0.06);
+}
+
+.edu-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.edu-degree {
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--paper, #F4F3EF);
+  letter-spacing: -0.015em;
+  line-height: 1.25;
+}
+
+.edu-college {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 0.92rem;
+  color: var(--muted, #8A8A84);
+}
+
+.edu-meta-block {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-shrink: 0;
+}
+
+.edu-timeline {
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.88rem;
+  color: var(--muted, #8A8A84);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.edu-score-pill {
+  border: 1px solid rgba(168, 255, 62, 0.28);
+  background: rgba(168, 255, 62, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.4rem 0.95rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--paper, #F4F3EF);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 8px rgba(168, 255, 62, 0.08);
+}
+
+.edu-score-pill strong {
+  color: var(--accent, #A8FF3E);
+  font-weight: 700;
+}
+
+/* 4 Metrics Datum Grid */
+.edu-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.edu-metric-chip {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  padding: 1.1rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.14);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease,
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.edu-metric-chip:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.075);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+}
+
+.edu-metric-chip:active {
+  transform: scale(0.98);
+  transition: transform 100ms ease-out;
+}
+
+.metric-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted, #8A8A84);
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.25s ease, background-color 0.25s ease;
+}
+
+.metric-icon.text-accent,
+.edu-metric-chip:hover .metric-icon {
+  color: var(--accent, #A8FF3E);
+  background: rgba(168, 255, 62, 0.1);
+  border-color: rgba(168, 255, 62, 0.2);
+}
+
+.metric-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.metric-value {
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--paper, #F4F3EF);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.metric-label {
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.72rem;
+  color: var(--muted, #8A8A84);
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* ----------------------------------------------------------------------------
+   RESPONSIVE MEDIA QUERIES
+   ---------------------------------------------------------------------------- */
+
+/* Tablet & Medium Screens (<= 960px) */
+@media (max-width: 960px) {
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about-mountain-card {
+    min-height: 380px;
+    max-height: 500px;
+  }
+
+  .about-value-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .edu-main-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.15rem;
+  }
+
+  .edu-meta-block {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .edu-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+/* Mobile Screens (<= 640px) */
+@media (max-width: 640px) {
+  .about-section {
+    padding: 3rem 0;
+  }
+
+  .about-headline {
+    font-size: 1.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .about-bio-lead {
+    font-size: 0.95rem;
+  }
+
+  .about-bio-sub {
+    font-size: 0.88rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-value-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .value-card {
+    padding: 1rem 0.9rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .value-card-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .about-mountain-card {
+    min-height: 320px;
+  }
+
+  .mountain-calligraphy-overlay {
+    font-size: 1.15rem;
+    bottom: 1.25rem;
+    left: 1.25rem;
+    right: 3.8rem;
+  }
+
+  .mountain-telemetry-badge {
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.58rem;
+    padding: 0.4rem 0.65rem;
+    max-width: 200px;
+  }
+
+  .mountain-back-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+  }
+
+  .education-section {
+    padding: 2.5rem 0;
+  }
+
+  .education-bento-card {
+    padding: 1.25rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .edu-institution-block {
+    gap: 0.85rem;
+  }
+
+  .edu-icon-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+
+  .edu-degree {
+    font-size: 1.15rem;
+  }
+
+  .edu-college {
+    font-size: 0.85rem;
+  }
+
+  .edu-meta-block {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .edu-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .edu-metric-chip {
+    padding: 0.85rem 0.9rem;
+  }
+}

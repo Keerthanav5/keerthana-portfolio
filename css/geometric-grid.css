@@ -1,0 +1,342 @@
+/**
+ * ============================================================================
+ * BESPOKE SWISS ARCHITECTURAL DATUM GRID & WATER-DROPLET SYSTEM
+ * File: css/geometric-grid.css
+ * Standard: Anti-AI-Slop, Mathematical Rigidity, Symmetric Rail Bounding,
+ *           Zero-Lag Fluid Water-Droplet Animation, Math Numbering (No Slashes),
+ *           Symmetric 28px Negative-Space Content Shelf
+ * ============================================================================
+ */
+
+:root {
+  /* Master Geometric Widths: Bounded to the exact optical span of KEERTHANA */
+  --hero-banner-w: min(calc(100% - 3.5rem), 1360px);
+  /* Optical ratio of letter K to letter A inside 1360px image: 1272 / 1360 */
+  --master-grid-w: calc(var(--hero-banner-w) * (1272 / 1360));
+  /* Left edge of K: 47px from left inside 1360px */
+  --master-grid-left: calc((100% - var(--hero-banner-w)) / 2 + var(--hero-banner-w) * (47 / 1360));
+  /* Right edge of A: 1319px from left, which is 41px from right inside 1360px */
+  --master-grid-right: calc((100% - var(--hero-banner-w)) / 2 + var(--hero-banner-w) * (41 / 1360) - 1px);
+
+  /* Calibrated Swiss Negative-Space Offset from Both Rails (Symmetric) */
+  --rail-content-gap: 28px;
+  
+  /* Hairline Datum Palettes (90/10 Rule) */
+  --datum-line: rgba(255, 255, 255, 0.07);
+  --datum-line-subtle: rgba(255, 255, 255, 0.035);
+  --datum-line-accent: rgba(168, 255, 62, 0.35);
+  --datum-joint-bg: #0A0A0A;
+}
+
+/* Master Hero Banner: Centered to match exact coordinate math */
+.hero-name-banner {
+  width: var(--hero-banner-w) !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+/* Strict Left & Right Grid Bounding Across ALL Sections */
+.container {
+  width: var(--master-grid-w) !important;
+  max-width: var(--master-grid-w) !important;
+  margin-left: var(--master-grid-left) !important;
+  margin-right: var(--master-grid-right) !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Master Vertical Guide Rails (Continuous from Top to Footer) */
+.master-grid-rail-left,
+.master-grid-rail-right {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(168, 255, 62, 0.3) 0%,
+    rgba(255, 255, 255, 0.08) 8%,
+    rgba(255, 255, 255, 0.08) 92%,
+    rgba(168, 255, 62, 0.3) 100%
+  );
+  z-index: 35;
+  pointer-events: none;
+}
+
+.master-grid-rail-left {
+  left: var(--master-grid-left);
+}
+
+.master-grid-rail-right {
+  right: var(--master-grid-right);
+}
+
+/* Master Architectural Vertical Guide Rails (Clean Precision Haired Datum) */
+
+/* Section Horizontal Datum Line */
+.section {
+  position: relative;
+}
+
+.section-datum-divider {
+  position: absolute;
+  top: 0;
+  left: var(--master-grid-left);
+  right: var(--master-grid-right);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(168, 255, 62, 0.35) 0%,
+    rgba(255, 255, 255, 0.06) 8%,
+    rgba(255, 255, 255, 0.06) 92%,
+    rgba(168, 255, 62, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 36;
+  transform-origin: left center;
+  transform: scaleX(0.98);
+  opacity: 0.75;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+.section.is-revealed .section-datum-divider {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Corner Merge Joints */
+.datum-joint {
+  position: absolute;
+  top: -6px;
+  width: 13px;
+  height: 12px;
+  background: var(--datum-joint-bg);
+  border: 1px solid rgba(168, 255, 62, 0.4);
+  box-shadow: 0 0 8px rgba(168, 255, 62, 0.1);
+  z-index: 38;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.datum-joint-left {
+  left: var(--master-grid-left);
+  transform: translateX(-50%);
+  clip-path: polygon(3px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 3px);
+}
+
+.datum-joint-right {
+  right: var(--master-grid-right);
+  transform: translateX(50%);
+  clip-path: polygon(0% 0%, calc(100% - 3px) 0%, 100% 3px, 100% 100%, 0% 100%);
+}
+
+.datum-joint::after {
+  content: '';
+  width: 3px;
+  height: 3px;
+  background: #A8FF3E;
+  border-radius: 50%;
+  box-shadow: 0 0 5px #A8FF3E;
+}
+
+/* Section Monospace Coordinate Register Chip */
+.section-coord-tag {
+  position: absolute;
+  top: -9px;
+  left: calc(var(--master-grid-left) + 20px);
+  font-family: 'IBM Plex Sans', monospace;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(168, 255, 62, 0.7);
+  background: #0A0A0A;
+  padding: 0 7px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 37;
+  transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section.is-indexed .section-coord-tag {
+  color: #A8FF3E;
+  border-color: rgba(168, 255, 62, 0.45);
+  box-shadow: 0 0 10px rgba(168, 255, 62, 0.2);
+}
+
+/* ============================================================================
+   BESPOKE SECTION TITLE ANCHOR — CLEAN ARCHITECTURAL INTEGRATION
+   Zero AI-Slop Underlines, Zero Overflowing Dashes, Pure Rail Anchoring
+   ============================================================================ */
+
+.section-title-anchor {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-left: 0;
+  padding-left: 0;
+  padding-bottom: 0;
+  margin-bottom: 1.5rem;
+  user-select: none;
+  position: relative;
+  width: auto !important; /* Never stretch across full container width */
+  max-width: max-content !important;
+}
+
+/* 1. Monospace Numeric Coordinate Index (02, 03, ...) */
+.section-title-anchor .section-index {
+  font-family: 'IBM Plex Sans', monospace;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(168, 255, 62, 0.55);
+  line-height: 1;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* 2. Uppercase Architectural Title (Syne) */
+.section-title-anchor .section-title,
+.section-title-anchor h2 {
+  margin: 0;
+  font-family: 'Syne', sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244, 243, 239, 0.7);
+  line-height: 1;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Section Active State: Crisp Architectural Luminescence */
+.section.is-indexed .section-title-anchor .section-index {
+  color: #A8FF3E;
+  text-shadow: 0 0 10px rgba(168, 255, 62, 0.6);
+}
+
+.section.is-indexed .section-title-anchor .section-title,
+.section.is-indexed .section-title-anchor h2 {
+  color: #FFFFFF;
+  text-shadow: 0 0 14px rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================================
+   RIGHT-SIDE HEADER ANCHORS & SYMMETRIC 28PX CONTENT SHELF
+   Titles anchor to left rail (x = 0); Actions anchor to right rail (x = 100%);
+   Cards, paragraphs, and bento grids have symmetric 28px gaps on BOTH sides.
+   ============================================================================ */
+
+.section-header-flex {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: baseline !important;
+  width: 100% !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.section-action-link {
+  font-family: 'IBM Plex Sans', monospace;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--paper, #F4F3EF);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin-right: 0 !important; /* Flush with right rail */
+}
+
+.section-action-link:hover {
+  border-color: #A8FF3E;
+  color: #A8FF3E;
+  box-shadow: 0 0 10px rgba(168, 255, 62, 0.15);
+}
+
+/* Universal Symmetric Shelf: 28px Gap on Left AND Right */
+.section-rail-offset,
+.about-headline,
+.about-bio-text,
+.education-bento-card,
+.skills-filter-bar,
+.skills-bento-grid,
+.internship-bento-card,
+.projects-bento-grid,
+.cert-bento-layout {
+  margin-left: var(--rail-content-gap) !important;
+  margin-right: var(--rail-content-gap) !important;
+  width: calc(100% - (2 * var(--rail-content-gap))) !important;
+}
+
+/* Contact card: always centered, never rail-anchored */
+.contact-bento-card {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: auto !important;
+}
+
+/* ============================================================================
+   RESPONSIVE FALLBACKS (< 960px)
+   ============================================================================ */
+
+@media (max-width: 960px) {
+  :root {
+    --rail-content-gap: 0px;
+  }
+
+  .master-grid-rail-left,
+  .master-grid-rail-right {
+    display: none !important;
+  }
+
+  .container {
+    width: calc(100% - 2.5rem) !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+
+  .section-rail-offset,
+  .about-bio-text,
+  .education-bento-card,
+  .skills-filter-bar,
+  .skills-bento-grid,
+  .internship-bento-card,
+  .projects-bento-grid,
+  .cert-bento-layout {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Contact card is always auto-centered; on mobile just give it some breathing room */
+  .contact-bento-card {
+    width: calc(100% - 2rem) !important;
+    max-width: 480px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .about-left-col {
+    padding-right: 0;
+  }
+
+  .section-datum-divider {
+    left: 1.25rem;
+    right: 1.25rem;
+  }
+
+  .datum-joint-left {
+    left: 1.25rem;
+  }
+
+  .datum-joint-right {
+    right: 1.25rem;
+  }
+
+  .section-coord-tag {
+    left: calc(1.25rem + 18px);
+  }
+}

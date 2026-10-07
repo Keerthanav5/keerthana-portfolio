@@ -1,0 +1,643 @@
+/* ===================================================================
+   CONTACT & FOOTER & MANIFESTO DESIGN SYSTEM
+   Ultra-High-End Bespoke UI Architecture
+   Palette: #0A0A0A (Void), #F4F3EF (Paper), #8A8A84 (Muted), #A8FF3E (Laser Accent)
+   =================================================================== */
+
+/* ===================================================================
+   1. MANIFESTO QUOTE CARD (Certifications / Philosophy Visual)
+   =================================================================== */
+.manifesto-quote-card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  padding: 2.5rem;
+  background: rgba(16, 20, 26, 0.72);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  height: 100%;
+  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  isolation: isolate;
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.manifesto-quote-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 28px 60px -10px rgba(0, 0, 0, 0.78), inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+.manifesto-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0.65;
+  z-index: 1;
+  filter: grayscale(15%) contrast(1.05);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.manifesto-quote-card:hover .manifesto-card-bg {
+  transform: scale(1.03);
+  opacity: 0.72;
+}
+
+.manifesto-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to right,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(10, 10, 10, 0.72) 58%,
+    rgba(10, 10, 10, 0.22) 100%
+  );
+  pointer-events: none;
+}
+
+.manifesto-quote-content {
+  position: relative;
+  z-index: 3;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.manifesto-quote-mark {
+  font-family: 'Syne', sans-serif;
+  font-size: 3.8rem;
+  line-height: 0.8;
+  color: var(--accent, #A8FF3E);
+  user-select: none;
+  display: block;
+  margin-bottom: -0.2rem;
+  text-shadow: 0 0 22px rgba(168, 255, 62, 0.3);
+}
+
+.manifesto-quote-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--paper, #F4F3EF);
+  margin: 0;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.manifesto-signature {
+  font-family: 'Syne', sans-serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent, #A8FF3E);
+  display: inline-block;
+  letter-spacing: 0.02em;
+}
+
+/* ===================================================================
+   2. SECTION CONTACT (Apple VisionOS Optical Frosted Glass Floating Pane)
+   =================================================================== */
+.contact-section {
+  position: relative;
+  padding: 5rem 0 3rem;
+}
+
+/* Centered layout for the entire contact inner */
+.contact-section-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Center the 08 CONTACT title anchor */
+.contact-title-anchor {
+  justify-content: center !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Staggered link row entry animations */
+@keyframes contactRowSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gentle float animation for the bento card (subtle, GPU only) */
+@keyframes contactCardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+
+.contact-bento-card.is-visible {
+  animation: contactCardFloat 6s ease-in-out 0.8s infinite;
+}
+
+.contact-bento-card.is-visible .contact-link-row:nth-child(1) {
+  animation: contactRowSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+.contact-bento-card.is-visible .contact-link-row:nth-child(2) {
+  animation: contactRowSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+.contact-bento-card.is-visible .contact-link-row:nth-child(3) {
+  animation: contactRowSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+}
+
+.contact-bento-card.is-visible .btn-send-message {
+  animation: contactRowSlideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.66s both;
+}
+
+/* Accessibility: respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .contact-bento-card.is-visible,
+  .contact-bento-card.is-visible .contact-link-row,
+  .contact-bento-card.is-visible .btn-send-message {
+    animation: none !important;
+  }
+}
+
+.contact-bento-card {
+  background: rgba(18, 22, 28, 0.68);
+  backdrop-filter: blur(36px) saturate(210%);
+  -webkit-backdrop-filter: blur(36px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 24px;
+  padding: 2.35rem 2.2rem;
+  max-width: 480px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 28px 64px -16px rgba(0, 0, 0, 0.8),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.22),
+              inset 0 -1px 0 0 rgba(0, 0, 0, 0.4);
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.contact-bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 36px 80px -14px rgba(0, 0, 0, 0.9),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
+}
+
+/* Precision Hairline Optical Specular Edge */
+.contact-bento-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(168, 255, 62, 0.45) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.contact-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Apple VisionOS Recessed Status Notch */
+.contact-status-notch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+  margin-bottom: 0.15rem;
+}
+
+.status-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, #A8FF3E);
+  box-shadow: 0 0 8px var(--accent, #A8FF3E);
+  animation: statusGlow 2.4s ease-in-out infinite;
+}
+
+@keyframes statusGlow {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); box-shadow: 0 0 12px var(--accent, #A8FF3E); }
+}
+
+.status-notch-text {
+  font-family: "IBM Plex Sans", monospace, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(244, 243, 239, 0.85);
+  text-transform: uppercase;
+}
+
+.contact-title {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: clamp(1.55rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0;
+  color: var(--paper, #F4F3EF);
+  text-align: center;
+}
+
+.contact-lead-desc {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(244, 243, 239, 0.72);
+  margin: 0 auto;
+  max-width: 36ch;
+  text-align: center;
+}
+
+/* Contact Links List */
+.contact-links-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+  margin: 0.65rem 0 0.85rem;
+}
+
+.contact-link-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem 1.05rem;
+  background: rgba(255, 255, 255, 0.035);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--paper, #F4F3EF);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: border-color 0.25s ease,
+              background-color 0.25s ease,
+              transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.contact-link-row:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1.5px);
+  box-shadow: 0 10px 24px -6px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+.contact-link-row:active {
+  transform: scale(0.985);
+  transition: transform 100ms ease-out;
+}
+
+.contact-row-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent, #A8FF3E);
+  flex-shrink: 0;
+  transition: background-color 0.25s ease,
+              color 0.25s ease;
+}
+
+.contact-link-row:hover .contact-row-icon {
+  background: rgba(168, 255, 62, 0.14);
+  color: var(--accent, #A8FF3E);
+}
+
+.contact-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  text-align: left;
+}
+
+.contact-row-label {
+  font-family: "IBM Plex Sans", monospace, sans-serif;
+  font-size: 0.64rem;
+  color: var(--muted, #8A8A84);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.contact-row-value {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--paper, #F4F3EF);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-row-arrow {
+  margin-left: auto;
+  font-size: 0.95rem;
+  color: var(--muted, #8A8A84);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+  flex-shrink: 0;
+}
+
+.contact-link-row:hover .contact-row-arrow {
+  transform: translate(2px, -2px);
+  color: var(--accent, #A8FF3E);
+}
+
+/* Primary Apple Tactile Pill Button */
+.btn-send-message {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  width: 100%;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  background: var(--accent, #A8FF3E);
+  color: #0A0A0A;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 20px rgba(168, 255, 62, 0.32),
+              inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s ease,
+              background-color 0.2s ease;
+}
+
+.btn-send-message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(168, 255, 62, 0.58),
+              0 8px 20px -4px rgba(0, 0, 0, 0.4);
+  background: #b5ff54;
+}
+
+.btn-send-message:hover .btn-send-arrow {
+  transform: translate(2px, -2px);
+}
+
+.btn-send-arrow {
+  display: inline-block;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-send-message:active {
+  transform: scale(0.985);
+  transition: transform 100ms ease-out;
+  box-shadow: 0 0 14px rgba(168, 255, 62, 0.35);
+}
+
+/* Social Icon Pills */
+.contact-social-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-social-pills a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper, #F4F3EF);
+  transition: border-color 0.2s ease,
+              color 0.2s ease,
+              transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
+}
+
+.contact-social-pills a:hover {
+  border-color: var(--accent, #A8FF3E);
+  color: var(--accent, #A8FF3E);
+  background: rgba(168, 255, 62, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ===================================================================
+   3. SITE FOOTER
+   =================================================================== */
+.site-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  margin-top: 5rem;
+  width: 100%;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+.footer-brand-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-block .footer-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--paper, #F4F3EF);
+}
+
+.footer-brand-block p {
+  font-size: 0.82rem;
+  color: var(--muted, #8A8A84);
+  margin: 0.3rem 0 0;
+}
+
+.footer-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 0.82rem;
+  color: var(--muted, #8A8A84);
+  flex-wrap: wrap;
+}
+
+.footer-nav-links a {
+  color: var(--muted, #8A8A84);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-nav-links a:hover {
+  color: var(--accent, #A8FF3E);
+}
+
+.footer-bottom {
+  font-size: 0.74rem;
+  color: rgba(138, 138, 132, 0.6);
+  font-family: "IBM Plex Sans", monospace, sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* ===================================================================
+   4. RESPONSIVE MEDIA QUERIES
+   =================================================================== */
+@media (max-width: 960px) {
+  .manifesto-quote-card {
+    padding: 2rem;
+    min-height: 280px;
+  }
+
+  .manifesto-quote-content {
+    max-width: 340px;
+  }
+
+  .contact-section {
+    padding: 5rem 0 2.5rem;
+  }
+
+  .contact-bento-card {
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .footer-bottom {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .manifesto-quote-card {
+    padding: 1.5rem;
+    min-height: 240px;
+    border-radius: 14px;
+  }
+
+  .manifesto-scrim {
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 10, 0.95) 0%,
+      rgba(10, 10, 10, 0.8) 65%,
+      rgba(10, 10, 10, 0.3) 100%
+    );
+  }
+
+  .manifesto-quote-mark {
+    font-size: 3rem;
+  }
+
+  .manifesto-quote-text {
+    font-size: 1.15rem;
+  }
+
+  .manifesto-signature {
+    font-size: 1.1rem;
+  }
+
+  .contact-section {
+    padding: 4rem 0 2rem;
+  }
+
+  .contact-bento-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 14px;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-lead-desc {
+    font-size: 0.95rem;
+  }
+
+  .contact-links-list {
+    margin: 1rem 0;
+    gap: 0.75rem;
+  }
+
+  .contact-link-row {
+    padding: 0.85rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .contact-row-value {
+    font-size: 0.85rem;
+  }
+
+  .contact-row-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-send-message {
+    padding: 0.95rem 1.5rem;
+    font-size: 0.85rem;
+  }
+
+  .site-footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-nav-links {
+    gap: 1rem;
+    font-size: 0.78rem;
+  }
+}

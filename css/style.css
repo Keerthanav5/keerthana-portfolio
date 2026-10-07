@@ -117,7 +117,13 @@ button {
 
 @media (max-width: 640px) {
   .loader {
-    transform: scale(1.6);
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 375px) {
+  .loader {
+    transform: scale(0.7);
   }
 }
 
@@ -450,46 +456,186 @@ button {
   min-height: 100vh;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1.28fr 0.95fr;
   align-items: center;
   padding: 85px clamp(1.5rem, 4vw, 4rem) 2rem;
   box-sizing: border-box;
-  gap: clamp(1.5rem, 3vw, 3rem);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-/* Left Side: Editorial Role Headline & Scroll Indicator */
+/* Left Side: Editorial Role Headline & Vertical Scroll Lockup */
 .hero-left {
   grid-column: 1;
   align-self: center;
+  margin-top: -8.5rem;
+  padding-left: clamp(1.5rem, 3.5vw, 4rem);
   z-index: 3;
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.hero-role-lockup {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1.2rem, 2.2vw, 2.2rem);
+}
+
+/* Vertical Scroll Indicator (Beside Headline on Left Side) */
+.hero-vertical-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  padding-top: 0.35rem;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.hero-vertical-scroll:hover {
+  transform: translateY(3px);
+}
+
+.vscroll-label {
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  color: rgba(244, 243, 239, 0.65);
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: color 0.25s ease;
+}
+
+.hero-vertical-scroll:hover .vscroll-label {
+  color: var(--accent);
+}
+
+.vscroll-rail {
+  position: relative;
+  width: 1.5px;
+  height: 68px;
+  background: rgba(244, 243, 239, 0.2);
+  border-radius: 1px;
+  overflow: visible;
+}
+
+.vscroll-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, rgba(168, 255, 62, 0.1), var(--accent));
+  box-shadow: 0 0 6px rgba(168, 255, 62, 0.6);
+  animation: vscrollTrail 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.vscroll-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  background: #FFFFFF;
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent), 0 0 2px #FFF;
+  animation: vscrollDot 2.2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes vscrollTrail {
+  0% {
+    top: 0;
+    height: 0%;
+    opacity: 0;
+  }
+  25% {
+    top: 0;
+    height: 45%;
+    opacity: 1;
+  }
+  75% {
+    top: 25%;
+    height: 70%;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    height: 0%;
+    opacity: 0;
+  }
+}
+
+@keyframes vscrollDot {
+  0% {
+    top: 0;
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.6);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  75% {
+    top: 64px;
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+  100% {
+    top: 68px;
+    opacity: 0;
+    transform: translate(-50%, 0) scale(0.6);
+  }
+}
+
 .hero-title {
   margin: 0;
   font-family: "Syne", sans-serif;
-  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
+  font-size: clamp(2.1rem, 3.1vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.14;
-  letter-spacing: -0.035em;
+  line-height: 1.16;
+  letter-spacing: -0.03em;
 }
 
 .hero-title-line {
   display: block;
   color: var(--paper);
+  white-space: nowrap;
 }
 
 .hero-title-accent {
   color: var(--accent);
 }
 
-.hero-left .hero-scroll-indicator {
-  margin-top: 2.75rem;
+/* ===================================================================
+   HERO CYBERSECURITY FUZZYTEXT ENGINE (React Bits Adaptation)
+   Horizontal Line Slices with Micro-Displacement & Zero Ambient Glow
+   =================================================================== */
+.hero-title-line-cyber {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28em;
+  white-space: nowrap;
 }
 
-/* Right Side: Keerthana Portrait */
+.cyber-fuzzy-canvas {
+  display: inline-block;
+  vertical-align: baseline;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  /* Zero glowing blur or drop-shadow — authentic sharp digital signal fuzz */
+  filter: none !important;
+}
+
+
+/* Right Side: Keerthana Portrait (Enlarged) */
 .hero-portrait-container {
   grid-column: 2;
   align-self: center;
@@ -498,7 +644,8 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 540px;
+  max-width: 860px;
+  margin-top: -3.5rem;
   z-index: 1;
   position: relative;
   opacity: 0;
@@ -512,7 +659,7 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 520px;
+  max-width: 860px;
 }
 
 .hero-portrait-img {
@@ -520,14 +667,22 @@ button {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 500px;
-  max-height: min(68vh, 500px);
+  max-width: 860px;
+  max-height: min(92vh, 850px);
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 24px;
   user-select: none;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 10px 30px -10px rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#hero-portrait {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  height: min(92vh, 850px);
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  display: block;
+  z-index: 1;
 }
 
 
@@ -578,27 +733,272 @@ button {
   }
 }
 
-/* Large Name: Across lower portion overlapping portrait */
-.hero-large-name {
+/* ==========================================================================
+   Hero Cinematic Name Banner & Masked Mountain Title
+   ========================================================================== */
+.hero-name-banner {
   position: absolute;
-  bottom: 20px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%) translateY(24px);
-  width: min(92vw, 1340px);
-  text-align: center;
-  font-family: "Syne", sans-serif;
-  font-weight: 800;
-  font-size: clamp(2.4rem, 8.2vw, 8.4rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--paper);
-  text-transform: uppercase;
-  z-index: 2;
-  pointer-events: none;
+  width: min(94vw, 1360px);
+  z-index: 10;
+  pointer-events: auto;
   user-select: none;
-  white-space: nowrap;
   opacity: 0;
   transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s, transform 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.22s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero-section.is-visible .hero-name-banner {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Top Telemetry: Cybersecurity Status Beacon */
+.hero-name-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 1.5rem;
+}
+
+.hero-cyber-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid rgba(138, 138, 132, 0.15);
+}
+
+.cyber-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  flex-shrink: 0;
+}
+
+.cyber-status-text {
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--paper);
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* Masked Alpine Mountain Title */
+.hero-masked-title-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1360 / 150;
+  max-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-masked-title {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-image: url('../assets/keerthana-name-test.png');
+  mask-image: url('../assets/keerthana-name-test.png');
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  background: #0A0A0A;
+  overflow: hidden;
+}
+
+/* Left Side Scroll Indicator: Hidden in favor of tactile bottom bar indicator */
+.hero-left .hero-scroll-indicator {
+  display: none;
+}
+
+/* Static High-Key Mountain Fill (Razor-Sharp Visibility, Zero Movement) */
+.hero-title-mountains-pan {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/keerthana-mountain-static.webp');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.hero-title-laser-glow {
+  display: none;
+}
+
+
+
+/* Bottom Telemetry Bar: Aligned to bottom-left under K */
+.hero-name-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 0.65rem 0 0 3.456%;
+}
+
+/* ==========================================================================
+   Sticky Section HUD Indicator (01 . 05) — Apple VisionOS Optical Glass
+   ========================================================================== */
+.site-section-indicator {
+  position: fixed;
+  bottom: 24px;
+  left: clamp(1.5rem, 4vw, 3.5rem);
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.14em;
+  pointer-events: auto;
+  cursor: pointer;
+  user-select: none;
+  background: rgba(16, 20, 26, 0.68);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  padding: 0.48rem 0.95rem;
+  border-radius: 980px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.site-section-indicator:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -6px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.34), 0 0 14px rgba(168, 255, 62, 0.12);
+}
+
+.site-section-indicator:active {
+  transform: scale(0.97) translateY(0);
+  transition: transform 100ms ease-out;
+}
+
+.indicator-index {
+  color: var(--paper);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.indicator-slash {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.indicator-total {
+  color: var(--muted);
+}
+
+.indicator-bar {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: rgba(138, 138, 132, 0.25);
+  border-radius: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.indicator-progress {
+  display: block;
+  height: 100%;
+  width: 20%;
+  background: var(--accent);
+  box-shadow: 0 0 8px rgba(168, 255, 62, 0.8);
+  transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-bottom-space-placeholder {
+  width: 90px;
+  height: 1px;
+}
+
+/* Center Mouse Scroll Indicator */
+.hero-tactile-mouse {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.hero-tactile-mouse:hover {
+  transform: translateY(2px);
+}
+
+.tactile-mouse-body {
+  width: 14px;
+  height: 22px;
+  border: 1.5px solid rgba(244, 243, 239, 0.45);
+  border-radius: 9px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: border-color 0.2s ease;
+}
+
+.hero-tactile-mouse:hover .tactile-mouse-body {
+  border-color: var(--accent);
+}
+
+.tactile-mouse-wheel {
+  position: absolute;
+  top: 4px;
+  width: 2.5px;
+  height: 4.5px;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: mouseWheelScroll 1.6s infinite ease-in-out;
+}
+
+@keyframes mouseWheelScroll {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  60% {
+    opacity: 0.2;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+/* Monospace Datum Registers */
+.hero-datum-registers {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: "IBM Plex Sans", monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--muted);
 }
 
 /* When hero is revealed after loading */
@@ -608,11 +1008,6 @@ button {
   transform: translateY(0);
 }
 
-.hero-section.is-visible .hero-large-name {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-}
-
 /* Responsive / Mobile Layout */
 @media (max-width: 960px) {
   .hero-stage {
@@ -620,8 +1015,8 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    min-height: 100vh;
-    padding: 85px 1.5rem 3rem;
+    min-height: auto;
+    padding: 85px 1.25rem 2.5rem;
     text-align: center;
     gap: 1.5rem;
   }
@@ -629,18 +1024,40 @@ button {
   .hero-left {
     order: 1;
     width: 100%;
+    margin-top: 0;
     margin-bottom: 0.5rem;
-    text-align: center;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-role-lockup {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 100%;
+  }
+
+  .vscroll-rail {
+    height: 52px;
   }
 
   .hero-title {
-    font-size: clamp(1.9rem, 6.5vw, 2.7rem);
-    line-height: 1.18;
+    font-size: clamp(1.4rem, 5.2vw, 1.95rem);
+    line-height: 1.2;
+    text-align: left;
   }
 
-  .hero-left .hero-scroll-indicator {
-    align-items: center;
-    margin: 1.5rem auto 0;
+  .hero-title-line {
+    white-space: normal;
+  }
+
+  .site-section-indicator {
+    bottom: 16px;
+    left: 16px;
+    font-size: 0.68rem;
+    padding: 0.35rem 0.7rem;
   }
 
   .hero-portrait-container {
@@ -653,26 +1070,41 @@ button {
     justify-self: center;
   }
 
-  .hero-portrait-img {
+  .hero-portrait-img,
+  #hero-portrait {
     max-height: 42vh;
     max-width: 320px;
     width: 100%;
     aspect-ratio: 1 / 1;
     border-radius: 20px;
+    touch-action: pan-y;
+    pointer-events: auto;
   }
 
-  .hero-large-name {
+  .hero-name-banner {
     position: relative;
     order: 3;
     bottom: auto;
     left: auto;
     transform: none !important;
-    margin-top: -1.75rem;
-    font-size: clamp(2.2rem, 10vw, 4.2rem);
-    line-height: 0.95;
-    z-index: 2;
+    margin-top: -0.5rem;
     width: 100%;
-    text-align: center;
+    opacity: 1;
+    z-index: 5;
+  }
+
+  .hero-name-top-bar {
+    justify-content: center;
+    padding-right: 0;
+  }
+
+  .hero-datum-registers {
+    display: none;
+  }
+
+  .hero-name-bottom-bar {
+    justify-content: space-around;
+    padding: 0.25rem 0.5rem 0;
   }
 }
 
@@ -707,15 +1139,20 @@ button {
   align-items: center;
   justify-content: space-between;
   width: min(94%, 960px);
-  height: 52px;
+  height: 54px;
   padding: 0 16px;
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(138, 138, 132, 0.18);
+  background: rgba(16, 20, 26, 0.68);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 980px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65);
-  transition: all 0.3s ease;
+  box-shadow: 0 16px 40px -8px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar:hover {
+  border-color: rgba(255, 255, 255, 0.20);
+  box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.82), inset 0 1px 0 0 rgba(255, 255, 255, 0.32);
 }
 
 /* Minimal Text Brand */
