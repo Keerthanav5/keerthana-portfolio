@@ -158,6 +158,23 @@ class Halftone {
     const g = c.getContext('2d');
     g.fillStyle = '#000';
     g.fillRect(0, 0, 600, 800);
+
+    if (window.__PORTRAIT_DOTS__ && Array.isArray(window.__PORTRAIT_DOTS__)) {
+      const dots = window.__PORTRAIT_DOTS__;
+      for (let i = 0; i < dots.length; i++) {
+        const d = dots[i];
+        const x = d[0] * 600;
+        const y = d[1] * 800;
+        const lum = Math.round(d[3] * 255);
+        const rad = Math.max(1, (d[2] || 1) * 3);
+        g.fillStyle = `rgb(${lum},${lum},${lum})`;
+        g.beginPath();
+        g.arc(x, y, rad, 0, Math.PI * 2);
+        g.fill();
+      }
+      return c;
+    }
+
     let r = g.createRadialGradient(300, 260, 20, 300, 260, 150);
     r.addColorStop(0, '#fff');
     r.addColorStop(1, '#222');
@@ -182,8 +199,11 @@ class Halftone {
 
   setSrc(s) {
     const im = new Image();
-    if (!s.startsWith('blob:')) im.crossOrigin = 'anonymous';
+    if (!s.startsWith('blob:') && !s.startsWith('data:') && window.location.protocol !== 'file:') {
+      im.crossOrigin = 'anonymous';
+    }
     im.onload = () => { this.img = im; this.build(); };
+    im.onerror = () => { this.build(); };
     im.src = s;
   }
 
@@ -195,7 +215,8 @@ class Halftone {
     this.cv.height = H * dpr;
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const src = this.img || Halftone.ph();
+    const isFile = window.location.protocol === 'file:';
+    const src = (isFile && window.__PORTRAIT_DOTS__) ? Halftone.ph() : (this.img || Halftone.ph());
     const s = Math.min(W / src.width, H / src.height) * 1.18;
     const w = src.width * s;
     const h = src.height * s;
@@ -211,7 +232,18 @@ class Halftone {
     oc.height = H;
     const g = oc.getContext('2d', { willReadFrequently: true });
     g.drawImage(src, ox, oy, w, h);
-    const d = g.getImageData(0, 0, W, H).data;
+    let d;
+    try {
+      d = g.getImageData(0, 0, W, H).data;
+    } catch (err) {
+      const fallbackSrc = Halftone.ph();
+      const freshCanvas = document.createElement('canvas');
+      freshCanvas.width = W;
+      freshCanvas.height = H;
+      const freshG = freshCanvas.getContext('2d', { willReadFrequently: true });
+      freshG.drawImage(fallbackSrc, ox, oy, w, h);
+      d = freshG.getImageData(0, 0, W, H).data;
+    }
     const sp = o.spacing;
     const cx = ox + w / 2;
     const cy = oy + h * 0.4;
@@ -457,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!el) return;
 
   window.heroHalftone = new Halftone(el, {
-    src: '/portrait.png',
+    src: 'portrait.png',
     shape: 'cross',
     color: 'mono',
     c1: '#b85437',
