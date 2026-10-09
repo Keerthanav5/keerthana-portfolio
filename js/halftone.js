@@ -153,18 +153,21 @@ class Halftone {
 
   static ph() {
     const c = document.createElement('canvas');
-    c.width = 600;
-    c.height = 800;
+    const aspect = window.__PORTRAIT_ASPECT__ || 1.0;
+    const w = 600;
+    const h = Math.round(600 * aspect);
+    c.width = w;
+    c.height = h;
     const g = c.getContext('2d');
     g.fillStyle = '#000';
-    g.fillRect(0, 0, 600, 800);
+    g.fillRect(0, 0, w, h);
 
     if (window.__PORTRAIT_DOTS__ && Array.isArray(window.__PORTRAIT_DOTS__)) {
       const dots = window.__PORTRAIT_DOTS__;
       for (let i = 0; i < dots.length; i++) {
         const d = dots[i];
-        const x = d[0] * 600;
-        const y = d[1] * 800;
+        const x = d[0] * w;
+        const y = d[1] * h;
         const lum = Math.round(d[3] * 255);
         const rad = Math.max(1, (d[2] || 1) * 3);
         g.fillStyle = `rgb(${lum},${lum},${lum})`;
@@ -175,19 +178,12 @@ class Halftone {
       return c;
     }
 
-    let r = g.createRadialGradient(300, 260, 20, 300, 260, 150);
+    let r = g.createRadialGradient(w / 2, h * 0.35, 20, w / 2, h * 0.35, 150);
     r.addColorStop(0, '#fff');
     r.addColorStop(1, '#222');
     g.fillStyle = r;
     g.beginPath();
-    g.ellipse(300, 260, 120, 150, 0, 0, 7);
-    g.fill();
-    r = g.createRadialGradient(300, 700, 40, 300, 700, 330);
-    r.addColorStop(0, '#ddd');
-    r.addColorStop(1, '#111');
-    g.fillStyle = r;
-    g.beginPath();
-    g.ellipse(300, 760, 270, 330, 0, 0, 7);
+    g.ellipse(w / 2, h * 0.35, 120, 150, 0, 0, 7);
     g.fill();
     return c;
   }
@@ -198,13 +194,15 @@ class Halftone {
   }
 
   setSrc(s) {
+    const isFile = window.location.protocol === 'file:';
+    const effectiveSrc = (isFile && window.__PORTRAIT_DATA_URL__) ? window.__PORTRAIT_DATA_URL__ : s;
     const im = new Image();
-    if (!s.startsWith('blob:') && !s.startsWith('data:') && window.location.protocol !== 'file:') {
+    if (!effectiveSrc.startsWith('blob:') && !effectiveSrc.startsWith('data:') && !isFile) {
       im.crossOrigin = 'anonymous';
     }
     im.onload = () => { this.img = im; this.build(); };
     im.onerror = () => { this.build(); };
-    im.src = s;
+    im.src = effectiveSrc;
   }
 
   build() {
@@ -215,8 +213,7 @@ class Halftone {
     this.cv.height = H * dpr;
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    const isFile = window.location.protocol === 'file:';
-    const src = (isFile && window.__PORTRAIT_DOTS__) ? Halftone.ph() : (this.img || Halftone.ph());
+    const src = this.img || Halftone.ph();
     const s = Math.min(W / src.width, H / src.height) * 1.18;
     const w = src.width * s;
     const h = src.height * s;
